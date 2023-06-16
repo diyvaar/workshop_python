@@ -1,4 +1,4 @@
-# Ringkasan Minggu Ke - 8
+# Ringkasan Minggu Ke - 7
 NIM     :  **205410155**<br>
 Nama    :  **Renina Diva Pindho Linangkung**<br>
 Kelas   :  **IF - 3**
