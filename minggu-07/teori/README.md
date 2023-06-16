@@ -3,101 +3,142 @@ NIM     :  **205410155**<br>
 Nama    :  **Renina Diva Pindho Linangkung**<br>
 Kelas   :  **IF - 3**
 ___
-## Bab. 10 Brief Tour of the Standard Library
+## Bab. 9 Classes
 
-10.1 Operating System Interface
+kelas (classes) dalam Python:
 
-Modul os menyediakan banyak fungsi untuk dapat berinteraksi dengan sistem operasi. Pastikan menggunakannya dengan 'import os'. Fungsi dir() dan help() sangat bermanfaat sebagai alat bantu interaktif untuk bekerja dengan modul yang banyak. Untuk file dan direktori sehari - hari, 'shutil' menyediakan antar muka tertinggi sehingga lebih mudah digunakan.
+* Kelas adalah struktur dasar untuk membuat objek dalam Python.
+* Kelas memiliki atribut (variabel) dan metode (fungsi) yang terkait dengan objek.
+* Atribut adalah variabel dalam kelas yang menyimpan informasi tentang objek.
+* Metode adalah fungsi dalam kelas yang digunakan untuk memanipulasi atribut atau melakukan operasi lain pada objek. 
+* Metode kelas adalah metode yang terikat dengan kelas itu sendiri, sedangkan metode statis adalah metode terkait dengan kelas secara umum.
+* Pewarisan memungkinkan kelas baru untuk menggunakan dan memperluas fungsionalitas kelas yang sudah ada.
+* Overriding memungkinkan kelas turunan untuk mengganti metode yang diwarisi dari kelas induk.
+* Multiple inheritance memungkinkan kelas untuk diturunkan dari beberapa kelas.
+* Polymorphism memungkinkan objek untuk memiliki banyak bentuk yang berbeda.
 
-10.2 File Wildcards 
+9.1 A Word About Names and Objects
 
-Modul glob menyediakan sebuah fungsi yang digunakan untuk membuat daftar file dari sebuah pencarian wildcard direktori.
+Dalam Python, variabel merupakan nama yang digunakan untuk merujuk pada objek di dalam memori. Ketika kita membuat variabel, sebenarnya kita membuat referensi ke objek tersebut. Objek dalam Python dapat memiliki banyak nama yang merujuk pada mereka. Perubahan nilai objek yang dilakukan melalui satu variabel akan mempengaruhi semua variabel lain yang merujuk pada objek yang sama. 
 
-10.3 Command Line Arguments
+9.2 Python Scopes and Namespaces
 
-Modul argparse menyediakan mekanisme yang lebih canggih untuk memproses argumen baris perintah. 
+Namespaces adalah tempat di mana nama-nama unik disimpan untuk menghindari konflik. Setiap cakupan memiliki ruang nama terkait. Python akan mencari nama di dalam cakupan lokal terlebih dahulu, kemudian di dalam cakupan global jika tidak ditemukan.
 
-10.4 Error Output Redirection and Programming Termination
+9.2.1 Scopes and Namespaces Example
 
-Modul sys memiliki atribut stdin, stdout, stderr. Stderr digunakan untuk memancarkan peringatan dan pesan kesalahan agar terlihat ketika stdout telah dialihkan.
+Contohnya ialah terdapat dua buah fungsi: "outer_function" dan "inner_function". Setiap fungsi memiliki variabel "x" yang didefinisikan di dalam cakupan lokalnya. Ketika "inner_function" mencoba mengakses variabel "x", Python akan mencari nilainya terlebih dahulu di dalam cakupan lokal fungsi tersebut. Jika tidak ditemukan, Python akan mencari di dalam cakupan lokal fungsi yang mengelilingi. Jika tetap tidak ditemukan, Python akan mencari di dalam cakupan global.
 
-10.5 String Pattern Machine
+Dalam contoh ini, karena variabel "x" tidak ditemukan di dalam cakupan lokal "inner_function", Python mencari di dalam cakupan lokal "outer_function" dan menemukan variabel "x" yang telah didefinisikan di sana. Oleh karena itu, nilai variabel "x" yang diakses di dalam "inner_function" berasal dari cakupan lokal "outer_function".
 
-Modul re menyediakan tools ekspresi pada umumnya untuk pemrosesan string tingkat lanjut.
+Contoh ini memberikan pemahaman praktis tentang bagaimana Python mengorganisir cakupan dan ruang nama, serta bagaimana akses ke variabel ditentukan berdasarkan urutan pencarian dalam berbagai cakupan.
 
-10.6 Mathematics
+9.3 A First Look at Classes
 
-Modul math memberikan akses ke fungsi library C sebagai dasar untuk matematika floating point. Modul random menyediakan tools untuk membuat pilihan acak. Modul Statistik digunakan untuk menghitung properti statistik dasar (rata - rata, median, varians, dll) dari data numerik.
+9.3.1 Class Definition Syntax
 
-10.7 Internet Access
+Kelas didefinisikan dengan menggunakan kata kunci "class" diikuti dengan nama kelas yang diawali dengan huruf kapital. Setelah deklarasi kelas, blok kode yang mengikuti akan menjadi tubuh kelas. Tubuh kelas berisi atribut dan metode yang mendefinisikan perilaku dan karakteristik dari objek yang dibuat dari kelas tersebut. Atribut adalah variabel yang terkait dengan kelas dan menyimpan informasi tentang objek. Metode adalah fungsi yang terkait dengan kelas dan digunakan untuk melakukan operasi pada objek.
 
-Umumnya terdapat beberapa modul yang digunakan untuk mengakses internet dan memproses protokol internet. Dua diantaranya yang paling sederhana ialah urlib.request untuk mengambil data dari URL dan smtplib untuk mengirim email.
+9.3.2 Class Objects 
 
-10.8 Dates and Times
+Objek kelas adalah instansi dari sebuah kelas dan memiliki atribut serta metode yang terkait. Atribut adalah variabel yang terkait dengan objek kelas, sedangkan metode adalah fungsi yang terkait dengan objek tersebut. Atribut dan metode dapat diakses melalui objek kelas menggunakan notasi titik.
 
-Modul datetime menyediakan kelas untuk memanipulasi tanggal dan waktu dengan cara sederhana dan kompleks. Dan mendukung date and time arithmetic. Fokus penerapannya ialah pada ekstraksi anggota yang efisien untuk pemformatan dan manipulasi output. 
+Setiap objek kelas memiliki ruang nama yang terpisah, tetapi mereka berbagi struktur dan perilaku yang ditentukan oleh kelas yang sama. Objek kelas dapat dibuat menggunakan sintaksis "nama_kelas()" dan konstruktor kelas, yang merupakan metode khusus, dipanggil saat objek kelas dibuat.
 
-10.9 Data Compression
+Konstruktor kelas dapat menginisialisasi atribut objek menggunakan argumen yang diteruskan saat pembuatan objek. Objek kelas juga dapat dihapus dari memori menggunakan pernyataan "del" atau ketika tidak lagi direferensikan oleh objek lain.
 
-Beberapa format data pada umumnya yang didukung oleh modul untuk archive dan compress ialah zlib, gzip, bz2, lzma, zipfile dan tarfile.
+9.3.3 Instance Objects
 
-10.10 Performance Measurement
+Objek instansi adalah objek yang dibuat dari kelas dan mewakili kasus individu atau instansi khusus dari kelas tersebut. Setiap objek instansi memiliki atribut yang membedakannya dari objek instansi lain yang dibuat dari kelas yang sama.
 
-Modul timeit akan dengan cepat menunjukkan keunggulan kinerja sederhana.
+Atribut objek instansi adalah variabel yang terkait dengan objek tersebut. Atribut dapat diakses dan dimodifikasi melalui objek instansi menggunakan notasi titik. Setiap objek instansi memiliki ruang nama terpisah yang menyimpan nilai unik untuk atributnya.
 
-10.11 Quality Control 
+Ketika objek instansi dibuat, konstruktor kelas dipanggil untuk melakukan inisialisasi awal. Konstruktor kelas adalah metode khusus yang didefinisikan dalam kelas dengan nama "init". Dalam konstruktor, kita dapat menginisialisasi atribut objek instansi dengan nilai-nilai awal yang diberikan.
 
-Modul doctest menyediakan tool untuk scanning sebuah modul dan memvalidasi test untuk setiap fungsi yang dibangun dan dijalankan setiap proses development.
+9.3.4 Method Objects 
 
-## BAB. 11 Brief Tour of the Standard Library 
+Objek metode adalah objek yang mewakili metode yang terkait dengan sebuah kelas. Metode adalah fungsi yang didefinisikan dalam kelas dan digunakan untuk melakukan operasi pada objek yang dibuat dari kelas tersebut.
 
-11.1 Output Formatting
-Bagian 11.1 dari tutorial modul standar library Python membahas pemformatan output. Modul "string" dan "reprlib" digunakan untuk mengontrol format tampilan objek dan teks yang dihasilkan.
+Ketika sebuah metode dipanggil, objek metode yang terkait dengan metode tersebut dibuat secara otomatis. Objek metode ini menyimpan referensi ke metode asli bersama dengan objek instansi yang memanggil metode.
 
-Modul "string" menyediakan berbagai metode untuk memanipulasi dan memformat string, seperti "string.format()" untuk menggabungkan nilai ke dalam string format, dan "string.Template()" untuk penggantian string berbasis placeholder.
+Objek metode dapat disimpan dalam variabel dan digunakan untuk memanggil metode yang terkait. Ketika objek metode dipanggil, metode yang terkait dijalankan pada objek instansi yang telah ditentukan sebelumnya.
 
-Modul "reprlib" digunakan untuk menghasilkan representasi terbatas dari objek kompleks, yang berguna untuk menghindari keluaran yang terlalu panjang atau berulang.
+Objek metode juga dapat diteruskan sebagai argumen ke metode lain atau digunakan dalam ekspresi lambda. Dalam kasus ini, objek metode berfungsi sebagai objek fungsi yang dapat dipanggil.
 
-11.2 Templating
+9.3.5 Class and Instance Variables
 
-Modul "string" dan "template" digunakan untuk membuat dan mengelola templat string. Modul "string" menyediakan metode-metode untuk memanipulasi dan memformat string, sedangkan modul "template" menyediakan kelas "Template" yang memungkinkan pembuatan templat string dengan placeholder yang dapat digantikan.
+ariabel kelas adalah variabel yang terkait dengan kelas itu sendiri, bukan dengan objek instansi yang dibuat dari kelas. Variabel kelas dapat diakses melalui kelas atau objek instansi dan berlaku untuk semua objek instansi yang dibuat dari kelas tersebut.
 
-Pemanfaatan templating memudahkan pembuatan teks yang dinamis, seperti pembuatan pesan atau email, penghasilan kode, atau pembuatan dokumen yang terstruktur.
+Variabel instansi adalah variabel yang terkait dengan objek instansi tertentu. Setiap objek instansi memiliki salinan terpisah dari variabel instansi, dan perubahan pada variabel instansi tidak mempengaruhi objek instansi lain.
 
-11.3 Working with Binary Data Record Layouts
+Variabel kelas didefinisikan di dalam tubuh kelas, di luar metode kelas. Mereka dapat diakses melalui notasi titik menggunakan nama kelas atau objek instansi. Variabel kelas juga dapat diakses melalui metode kelas dan metode instansi.
 
-Modul "struct" digunakan untuk membaca, menulis, dan memanipulasi data dalam format biner. Modul "struct" menyediakan fungsi-fungsi untuk mengonversi data antara representasi biner dan representasi Python yang dapat dioperasikan.
+Variabel instansi biasanya didefinisikan di dalam metode kelas, terutama dalam konstruktor kelas "init". Setiap objek instansi memiliki salinan terpisah dari variabel instansi tersebut.
 
-Modul "struct" dapat membaca data dari file biner, memanipulasi data biner, dan menulis data ke file biner sesuai dengan format yang ditentukan.
+9.4 Random Remarks
 
-11.4 Multi-threading
+Metode dan atribut dalam kelas dapat diwarisi dan diubah oleh kelas turunan.
 
-Modul "threading" digunakan untuk membuat dan mengelola thread dalam program Python.
+Keyword "super" digunakan untuk mengakses metode yang diwarisi dari kelas dasar saat mendefinisikan metode yang sama di kelas turunan.
 
-Modul "threading" menyediakan kelas "Thread" yang memungkinkan pembuatan dan pengelolaan thread. Dengan membuat thread baru maka user dapat mengontrol eksekusi paralel, dan berkomunikasi antar thread menggunakan objek "Lock" atau "Condition".
+Polimorfisme adalah kemampuan objek untuk memiliki banyak bentuk. Dalam Python, polimorfisme dapat dicapai melalui metode yang sama dengan perilaku yang berbeda pada kelas-kelas yang berbeda.
 
-Multi-threading dapat digunakan untuk menjalankan tugas-tugas secara paralel untuk meningkatkan kinerja dan responsivitas program. Sehingga berguna dalam situasi di mana tugas-tugas dapat dilakukan secara independen atau saat program perlu merespons input atau kejadian secara real-time.
+Metode "isinstance()" dan "issubclass()" digunakan untuk memeriksa hubungan antara objek dan kelas dalam hierarki pewarisan.
 
-11.5 Logging
+Encapsulation adalah konsep untuk menyembunyikan implementasi internal objek dan hanya memungkinkan akses melalui antarmuka publik.
 
-Modul "logging" digunakan untuk mencatat pesan dan kejadian dalam program Python. Modul "logging" menyediakan kelas "Logger" yang memungkinkan pencatatan pesan dengan tingkat prioritas yang berbeda sehingga dapat membantu dalam pemantauan, pemecahan masalah, dan analisis program.
+Duck typing adalah prinsip dalam Python yang berfokus pada perilaku objek daripada tipe kelasnya. Jika objek bertindak seperti bebek dan berbunyi seperti bebek, maka dianggap sebagai bebek.
 
-Modul "logging" memiliki fleksibilitas yang tinggi dan dapat diatur sesuai dengan kebutuhan yang di butuhkan. kita dapat mengarahkan output log ke berbagai target, seperti file, konsol, atau sistem log eksternal.
+9.5 Inheritance
 
-11.6 Weak References
+Warisan adalah konsep yang memungkinkan kelas untuk mewarisi atribut dan metode dari kelas lain yang disebut kelas dasar atau superclass. Kelas yang mewarisi atribut dan metode disebut kelas turunan atau subclass.
 
-Modul "weakref" digunakan untuk membuat referensi yang lemah (weak references) terhadap objek. Modul "weakref" menyediakan kelas "WeakRef" yang memungkinkan kita membuat referensi yang tidak mempengaruhi siklus referensi dan tidak mencegah penghapusan objek.
+Dalam warisan, kelas turunan dapat menggunakan atribut dan metode yang sudah ada dalam kelas dasar tanpa perlu mendefinisikannya ulang. Ini memungkinkan untuk mengorganisir dan mengelompokkan kode secara hierarkis.
 
-Modul "weakref" memungkinkan untuk mengikuti referensi terhadap objek yang terhapus secara otomatis dan mengatasi masalah dengan siklus referensi yang dapat menghambat penghapusan objek.
+Konsep warisan juga mendukung konsep polimorfisme, di mana objek kelas turunan dapat digunakan sebagai objek kelas dasar. Hal ini memungkinkan fleksibilitas dalam penggunaan objek dan memungkinkan penggunaan pola desain seperti polimorfisme dan substitusi Liskov.
 
-11.7 Tools for Working with Lists
+9.5.1 Multiple Inheritance
 
-Modul "array" menyediakan kelas "array" yang memungkinkan kita menyimpan dan memanipulasi data dalam bentuk array yang diketahui tipe datanya. Hal ini dapat menghemat ruang dan meningkatkan kinerja saat bekerja dengan data numerik.
+Multiple inheritance adalah konsep di mana sebuah kelas dapat mewarisi atribut dan metode dari lebih dari satu kelas dasar. Dalam hal ini, kelas turunan memiliki beberapa kelas dasar. Dalam Python, untuk menggunakan multiple inheritance, kita dapat menyebutkan beberapa kelas dasar dipisahkan oleh tanda koma setelah kata kunci "class". Kelas turunan akan mewarisi atribut dan metode dari semua kelas dasar yang diberikan.
 
-Modul "collections" menyediakan kelas-kelas seperti "deque" (antrian ganda) dan "Counter" yang menyediakan fitur-fitur tambahan untuk memanipulasi daftar. Misalnya, "deque" memungkinkan operasi penghapusan dan penambahan elemen di kedua ujung antrian dengan kinerja yang baik. Serta memperluas fungsionalitas daftar dengan alat-alat yang lebih efisien dan khusus, tergantung pada kebutuhan program yang di inginkan.
+9.6 Private Variables
 
-11.8 Decimal Floating Point Arithmetic
+Variabel pribadi adalah variabel yang dianggap bersifat pribadi dan seharusnya tidak diakses atau dimodifikasi langsung dari luar kelas. Variabel pribadi dimulai dengan garis bawah ganda (underscore) di awal namanya, seperti "_namaVariabel".
 
-Modul "decimal" digunakan untuk melakukan operasi matematika yang akurat dengan bilangan desimal. Dengan menggunakan modul "decimal" dapat menghindari kesalahan pembulatan yang umum terkait dengan aritmatika floating point biasa. 
+Variabel pribadi diimplementasikan menggunakan konvensi dan aturan tertentu, tetapi secara teknis masih dapat diakses dan dimodifikasi dari luar kelas. Namun, penggunaan garis bawah ganda menandakan bahwa variabel tersebut seharusnya digunakan secara pribadi dan tidak dianggap sebagai bagian publik antarmuka kelas.
 
-Modul "decimal" memungkinkan kita untuk mengatur jumlah digit desimal yang diinginkan, mengendalikan pembulatan, dan menangani angka desimal dengan akurasi tinggi.
+9.7 Odds and Ends 
+
+Menggunakan fungsi built-in "getattr()" untuk mengakses atribut atau metode dari objek secara dinamis.
+
+Dalam Python, semua tipe data adalah objek, termasuk tipe data dasar seperti angka dan string.
+
+Konstruktor kelas, "init()", dapat digunakan untuk melakukan inisialisasi saat objek instansi dibuat.
+
+"self" digunakan dalam definisi metode kelas untuk mengacu pada objek instansi yang sedang dikerjakan.
+
+Penerusan metode ("method delegation") adalah konsep yang memungkinkan objek delegasi untuk memanggil metode pada objek lain.
+
+Konsep "getter" dan "setter" digunakan untuk mengakses dan memodifikasi atribut dengan cara yang terkontrol.
+
+9.8 Iterators 
+
+Iterator adalah objek yang digunakan untuk mengiterasi atau mengulang secara berurutan melalui elemen-elemen dari suatu koleksi atau struktur data. Iterasi adalah proses melalui elemen-elemen satu per satu.
+
+Untuk mendukung iterasi, suatu objek harus mengimplementasikan dua metode khusus: "iter()" dan "next()". Metode "iter()" mengembalikan objek iterator itu sendiri, sementara metode "next()" mengembalikan elemen berikutnya dalam iterasi. Jika tidak ada elemen berikutnya, metode "next()" harus menghasilkan pengecualian StopIteration untuk menghentikan iterasi.
+
+Iterasi dapat dilakukan menggunakan pernyataan "for" yang umum digunakan dalam Python. Pernyataan "for" akan secara otomatis memanggil metode "iter()" untuk mendapatkan iterator dan menggunakan metode "next()" untuk mendapatkan elemen-elemen selama iterasi.
+
+9.9 Generators 
+
+Generator adalah fungsi khusus yang menghasilkan serangkaian nilai secara bertahap, satu nilai pada satu waktu, tanpa harus menyimpan seluruh rangkaian nilai dalam memori. Generator memungkinkan kita untuk menghasilkan nilai-nilai secara efisien dalam situasi di mana menghasilkan seluruh rangkaian nilai sekaligus akan memakan banyak memori.
+
+Untuk membuat generator, kita menggunakan kata kunci "yield" dalam fungsi. Ketika "yield" dieksekusi, generator akan menghasilkan nilai tersebut dan menyimpan keadaan internalnya. Pada pemanggilan berikutnya, generator akan melanjutkan dari keadaan terakhirnya dan menghasilkan nilai berikutnya.
+
+9.10 Generator Expressions
+
+Generator expression mirip dengan list comprehension, tetapi menggunakan tanda kurung () daripada tanda kurung siku []. Mereka memungkinkan kita untuk membuat generator secara langsung dalam satu baris kode, tanpa perlu mendefinisikan fungsi terpisah.
+
+Dalam generator expression, kita menuliskan ekspresi yang menghasilkan nilai untuk setiap elemen dalam rangkaian yang diinginkan. Generator expression akan secara otomatis menghasilkan nilai-nilai ini satu per satu saat diminta, tanpa perlu menyimpan semua nilai dalam memori.
+
+
