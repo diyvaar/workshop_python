@@ -8,8 +8,33 @@ Menggunakan psycopg2 dengan CockroachDB
 Langkah - langkah untuk membuat python app dengan CockroachDB dan psycopg2 adalah sebagai berikut :
 1. Start CockroachDB
 Pada tahapan ini akan diarahkan untuk pembuatan akun dan cluster di CockroachDb, adapun root certificate dapat di unduh melalui powershell atau cmd dengan link yang disertakan. Serta, link general connection string sebagai database url untuk terhubung ke dalam cluster CockroachDB.
+
 2. Get the sample code
 Pada tahapan ini akan melakukan kloning data dari github yang nantinya digunakan untuk transfer data antara database lokal dengan cluster CockroachDB.
+
 3. Install the psycopg2
 Pada tahapan ini akan menginstall psycopg2 sebagai dependency yang dibutuhkan untuk transfer data processing.
-4. 
+
+4. Run the code
+Pada tahapan ini akan melakukan koneksi ke dalam cluster di CockroachDB dan perintah untuk melakukan transfer data dengan menjalankan example.py.
+
+Bagian menggunakan SQLAlchemy dengan CockroachDB
+
+Adapun langkah - langkah untuk melaukan CRUD sederhana dengan CockroachDB dan SQLAlchemy, sebagai berikut :
+
+Step 1. Start CockroachDB
+langkah ini sama seperti yang ada pada "Bagian menggunakan psycopg2 dengan CockroachDB".
+
+Step 2. Get the code
+pada langkah ini terdapat petunjuk untuk melakukan klongin data dari github yang nantinya digunakan untuk CRUD ke dalam cluster CockroachDB.
+
+Step 3. Install the apllication requirements
+pada langkah ini terdapat petunjuk untuk membuat virtual environment yang nantinya di gunakan sebagai direktori untuk melakukan proses CRUD.
+
+Step 4. Initialize the database
+pada langkah ini terdapat petunjuk untuk melakukan koneksi ke dalam cluster CockroachDB, serta melakukan pembuatan tabel dengan perintah cat dbinit.sql | cockroach sql --url $DATABASE_URL .
+
+Step 5. Run the code
+pada langkah ini terdapat petunjuk untuk melakukan CRUD ke dalam cluster CockroachDB dengan menjalankan main.py yang telah di kloning sebelumnya dari link github yang disertakan.
+
+Beberapa petunjuk tambahan untuk mengganti prefix dan menampilkan hasil CRUD dapat melalui SQL shell.
