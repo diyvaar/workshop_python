@@ -1,1 +1,16 @@
+# Ringkasan Minggu Ke - 10
+NIM     :  **205410155**<br>
+Nama    :  **Renina Diva Pindho Linangkung**<br>
+Kelas   :  **IF - 3**
+___
 
+## Menggunakan psycopg2 dengan CockroachDB
+
+Langkah - langkah untuk membuat python app dengan CockroachDB dan psycopg2 adalah sebagai berikut :
+* Start CockroachDB
+Pada tahapan ini akan diarahkan untuk pembuatan akun dan cluster di CockroachDb, adapun root certificate dapat di unduh melalui powershell atau cmd dengan link yang disertakan. Serta, link general connection string sebagai database url untuk terhubung ke dalam cluster CockroachDB.
+* Get the sample code
+Pada tahapan ini akan melakukan kloning data dari github yang nantinya digunakan untuk transfer data antara database lokal dengan cluster CockroachDB.
+* Install the psycopg2
+Pada tahapan ini akan menginstall psycopg2 sebagai dependency yang dibutuhkan untuk transfer data processing.
+*
